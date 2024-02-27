@@ -1259,48 +1259,7 @@ this.dispose();
         }
     }
     
-    public void mostrarIngresos(String tabla){
-        String sql = "select * from " + tabla;
-        Statement st;
-        ConexionBD aux = new ConexionBD();
-        Connection aux2 = aux.conectar();
-        
-        //Instanciamos el modelo de la tabla 
-        DefaultTableModel modelo = new DefaultTableModel();
-        
-        //Encabezado de las columnas 
-        modelo.addColumn("Código Producto");
-        modelo.addColumn("Nombre Producto");
-        modelo.addColumn("Descripción");
-        modelo.addColumn("Costo");
-        modelo.addColumn("Categoria");
-        modelo.addColumn("Cantidad");
-        modelo.addColumn("Ubicacion");
-        this.jTInventario.setModel(modelo);
-        String [] datos = new String[7];
-        
-        try{
-            st = aux2.createStatement();
-            //Ayuda a controlar el numero de filas que presentara cada columna 
-            ResultSet rs = st.executeQuery(sql);
-            
-            //Recorre los datos de la columna 
-            while(rs.next()){
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
-                datos[5] = rs.getString(6);
-                datos[6] = rs.getString(7);
-                
-                //Añade los datos al modelo 
-                modelo.addRow(datos);
-        }
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTFDescripcionProductoActualizar;
